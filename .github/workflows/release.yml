@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   release:
@@ -27,18 +27,8 @@ jobs:
           npm install
           npx husky install
           npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "%1"'
-
-      - name: Check GITHUB_TOKEN
-        run: echo "GITHUB_TOKEN is set"
-        env:
-          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
-
       - name: Run Semantic Release
-        run: npx semantic-release --debug
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          DEBUG: semantic-release:*
-
-      - name: List Environment Variables
-        run: env
+          NPM_TOKEN: ${{ secrets.NPM-TOKEN }}
