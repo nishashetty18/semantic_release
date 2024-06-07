@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' 
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -26,12 +26,8 @@ jobs:
           npx husky-init
           npx husky install
           npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "%1"'
-
       - name: Run Semantic Release
-        run: npx semantic-release
+        run: npm run semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}  
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} 
-
-
-
+          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM-TOKEN }}
