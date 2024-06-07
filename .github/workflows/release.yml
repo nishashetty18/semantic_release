@@ -16,13 +16,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
 
       - name: Set up Husky hooks
         run: |
+          npx husky-init
           npx husky install
           npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "%1"'
 
