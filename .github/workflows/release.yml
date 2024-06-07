@@ -28,7 +28,8 @@ jobs:
           npx husky install
           npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "%1"'
       - name: Run Semantic Release
-        run: npx semantic-release
+        run: npm ci
+        run: npm run semantic-release
         env:
           HUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM-TOKEN }}
