@@ -30,7 +30,7 @@ jobs:
       - name: Run Semantic Release
         run: npx run semantic-release
         env:
-          HUB_TOKEN: ${{ secrets.HUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM-TOKEN }}
 
-          
+
